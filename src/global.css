@@ -1,13 +1,22 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap");
 @layer theme, base, components, utilities;
 @config "../tailwind.config.js";
 
+/* Base resets */
 body {
-  @apply leading-[normal] m-0;
+  margin: 0;
+  line-height: normal;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @layer base {
   *,
   *::before,

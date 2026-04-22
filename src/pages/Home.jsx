@@ -10,12 +10,12 @@ import FooterBlock from "../components/FooterBlock";
 
 const Home = () => {
   return (
-    <div className="w-full min-h-screen relative bg-[#fff] flex flex-col items-center pt-[10px] pb-0 px-0 box-border leading-[normal] tracking-[normal]">
-      <main className="w-full max-w-[1440px] flex flex-col items-center gap-[100px] mq1125:h-auto mq450:gap-[25px] mq800:gap-[50px] overflow-hidden">
-        <div className="w-full flex flex-col gap-[70px] mq450:gap-[17px] mq800:gap-[35px] pb-10">
-          <Navbar />
-          <Hero />
-        </div>
+    <div className="w-full min-h-screen bg-white overflow-x-hidden font-['Space_Grotesk']">
+      <Navbar />
+
+      {/* Page content — pushed down to clear fixed navbar */}
+      <main className="flex flex-col gap-16 md:gap-24 lg:gap-[100px] pt-[72px] md:pt-[100px] pb-0">
+        <Hero />
         <Services />
         <CtaSection />
         <CaseStudies />

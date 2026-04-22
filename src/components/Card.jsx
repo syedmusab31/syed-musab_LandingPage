@@ -20,30 +20,24 @@ const Card = ({
   labelHeight,
 }) => {
   const cardStyle = useMemo(() => {
-    return {
-      backgroundColor: cardBackgroundColor,
-    };
+    return { backgroundColor: cardBackgroundColor };
   }, [cardBackgroundColor]);
 
   const headingAndLinkStyle = useMemo(() => {
-    return {
-      justifyContent: headingAndLinkJustifyContent,
-    };
+    return { justifyContent: headingAndLinkJustifyContent };
   }, [headingAndLinkJustifyContent]);
 
   const illustrationIconStyle = useMemo(() => {
-    return {
-      height: illustrationIconHeight,
-    };
+    return { height: illustrationIconHeight };
   }, [illustrationIconHeight]);
 
   return (
     <div
-      className={`flex-1 min-w-[350px] max-w-[600px] shadow-[0px_5px_0px_#191a23] rounded-[45px] bg-grey border-dark border-solid border-[1px] box-border overflow-hidden flex items-center justify-between py-12 px-[50px] gap-5 text-left text-xl text-black font-['Space_Grotesk'] mq800:gap-5 mq800:pl-[25px] mq800:pr-[25px] mq800:box-border ${className}`}
+      className={`w-full shadow-[0px_5px_0px_#191a23] rounded-3xl md:rounded-[45px] bg-grey border-dark border-solid border-[1px] box-border overflow-hidden flex items-center justify-between p-6 md:py-12 md:px-[50px] gap-4 md:gap-5 text-left text-base md:text-xl text-black font-['Space_Grotesk'] ${className}`}
       style={cardStyle}
     >
       <div
-        className="flex flex-col items-start justify-center gap-5"
+        className="flex flex-col items-start justify-center gap-4 md:gap-5 flex-1 min-w-0"
         style={headingAndLinkStyle}
       >
         <Heading
@@ -58,12 +52,12 @@ const Card = ({
           label2={label2}
           labelVisible={labelVisible}
         />
-        <div className={`w-[287px] text-lg leading-7 ${textColor} font-['Space_Grotesk'] mq450:text-base`}>
+        <div className={`text-base md:text-lg leading-7 ${textColor} font-['Space_Grotesk']`}>
           {description}
         </div>
       </div>
       <img
-        className="h-[170px] w-[210px] relative object-cover"
+        className="h-[120px] w-[140px] md:h-[170px] md:w-[210px] relative object-cover flex-shrink-0"
         alt=""
         src={illustration}
         style={illustrationIconStyle}
@@ -85,8 +79,6 @@ Card.propTypes = {
   labelVisible: PropTypes.bool,
   labelWidth: PropTypes.any,
   labelHeight: PropTypes.any,
-
-  /** Style props */
   cardBackgroundColor: PropTypes.string,
   headingAndLinkJustifyContent: PropTypes.string,
   illustrationIconHeight: PropTypes.string,

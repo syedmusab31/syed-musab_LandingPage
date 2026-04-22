@@ -9,8 +9,10 @@ module.exports = {
         grey: "#f3f3f3",
         black: "#000",
       },
+      fontFamily: {
+        sans: ["Space Grotesk", "sans-serif"],
+      },
     },
-    screens: {},
   },
   corePlugins: {
     preflight: false,

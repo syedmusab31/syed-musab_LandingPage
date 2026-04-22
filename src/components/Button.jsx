@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const getButtonStyle = (styleKey) => {
   switch (styleKey) {
     case "Button secondary":
-      return "[&]:border-dark [&]:border-solid [&]:border-[1px] [&]:bg-[transparent]";
+      return "[&]:border-dark [&]:border-solid [&]:border-[1px] [&]:bg-[transparent] hover:bg-[#b9ff66] transition-colors duration-300";
     case "Button tertiary":
       return "[&]:bg-green";
   }

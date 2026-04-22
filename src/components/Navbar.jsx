@@ -1,40 +1,116 @@
+import { useState } from "react";
 import Logo from "./Logo";
 import Button from "./Button";
 import PropTypes from "prop-types";
 
 const Navbar = ({ className = "" }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      // Adding a slight offset for visual comfort if needed, but smooth scrolling to element is generally fine.
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    setIsOpen(false);
   };
 
   return (
-    <header className={`w-full overflow-hidden flex items-center justify-between py-0 px-[100px] box-border gap-5 text-left text-xl text-black font-['Space_Grotesk'] mq1125:gap-5 mq800:gap-5 mq800:pl-[25px] mq800:pr-[25px] mq800:box-border mq1350:gap-5 mq1350:pl-[50px] mq1350:pr-[50px] mq1350:box-border ${className}`}>
-      <div className="overflow-hidden flex items-start py-1.5 px-0">
-        <Logo property1="Default" />
-      </div>
-      <div className="flex items-center justify-center gap-10 mq1125:hidden mq450:gap-5">
-        <h3 onClick={() => scrollToSection('services')} className="cursor-pointer hover:text-green transition-colors m-0 relative text-[length:inherit] leading-7 font-normal font-[inherit]">
-          Services
-        </h3>
-        <h3 onClick={() => scrollToSection('case-studies')} className="cursor-pointer hover:text-green transition-colors m-0 relative text-[length:inherit] leading-7 font-normal font-[inherit]">
-          Case Studies
-        </h3>
-        <h3 onClick={() => scrollToSection('working-process')} className="cursor-pointer hover:text-green transition-colors m-0 relative text-[length:inherit] leading-7 font-normal font-[inherit]">
-          Working Process
-        </h3>
-        <div onClick={() => scrollToSection('contact')}>
-          <Button
-            property1="Button secondary"
-            buttonAlignItems="flex-start"
-            buttonWidth="unset"
-            buttonJustifyContent="unset"
-            label="Request a quote"
-          />
+    <header
+      className={`fixed top-0 left-0 z-50 bg-white w-full border-b border-gray-100 font-['Space_Grotesk'] ${className}`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 lg:px-12 py-3 md:py-4">
+        {/* Logo */}
+        <div
+          className="cursor-pointer flex-shrink-0"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <Logo property1="Default" />
         </div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-xl text-black">
+          <span
+            onClick={() => scrollToSection("services")}
+            className="cursor-pointer hover:text-green transition-colors duration-200"
+          >
+            Services
+          </span>
+          <span
+            onClick={() => scrollToSection("case-studies")}
+            className="cursor-pointer hover:text-green transition-colors duration-200"
+          >
+            Case Studies
+          </span>
+          <span
+            onClick={() => scrollToSection("working-process")}
+            className="cursor-pointer hover:text-green transition-colors duration-200"
+          >
+            Working Process
+          </span>
+          <div onClick={() => scrollToSection("contact")}>
+            <Button
+              property1="Button secondary"
+              buttonAlignItems="flex-start"
+              buttonWidth="unset"
+              buttonJustifyContent="unset"
+              label="Request a quote"
+            />
+          </div>
+        </nav>
+
+        {/* Hamburger Button */}
+        <button
+          className="lg:hidden flex flex-col gap-1.5 p-2 cursor-pointer bg-transparent border-none"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+          />
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col items-start gap-4 px-4 pb-6 pt-2 bg-white border-t border-gray-100 text-xl text-black">
+          <span
+            onClick={() => scrollToSection("services")}
+            className="cursor-pointer hover:text-green transition-colors duration-200 w-full py-2"
+          >
+            Services
+          </span>
+          <span
+            onClick={() => scrollToSection("case-studies")}
+            className="cursor-pointer hover:text-green transition-colors duration-200 w-full py-2"
+          >
+            Case Studies
+          </span>
+          <span
+            onClick={() => scrollToSection("working-process")}
+            className="cursor-pointer hover:text-green transition-colors duration-200 w-full py-2"
+          >
+            Working Process
+          </span>
+          <div onClick={() => scrollToSection("contact")} className="pt-2">
+            <Button
+              property1="Button secondary"
+              buttonAlignItems="flex-start"
+              buttonWidth="unset"
+              buttonJustifyContent="unset"
+              label="Request a quote"
+            />
+          </div>
+        </nav>
       </div>
     </header>
   );

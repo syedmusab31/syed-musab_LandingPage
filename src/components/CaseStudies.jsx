@@ -12,39 +12,47 @@ const studies = [
 ];
 
 const CaseStudies = ({ className = "" }) => {
-    <section id="case-studies" className={`w-full flex justify-center pt-0 px-[100px] pb-10 box-border max-w-full text-left text-lg text-black font-['Space_Grotesk'] mq800:pl-[25px] mq800:pr-[25px] mq800:box-border mq1350:pl-[50px] mq1350:pr-[50px] mq1350:box-border ${className}`}>
-      <div className="w-full max-w-[1240px] flex flex-col gap-20 mq450:gap-5 mq800:gap-10">
-        <div className="flex items-start gap-10 max-w-full mq1125:flex-wrap">
+  return (
+    <section
+      id="case-studies"
+      className={`w-full flex justify-center font-['Space_Grotesk'] ${className}`}
+    >
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-10 md:gap-16 px-4 md:px-8 lg:px-12">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start gap-6 md:gap-10">
           <Heading
             property1="Green"
             label="Case Studies"
             showLabel={false}
             labelVisible={false}
           />
-          <div className="w-[580px] relative inline-block shrink-0 max-w-full">
-            Explore real examples of how strategic design and development improved performance, usability, and business outcomes.
-          </div>
+          <p className="text-base md:text-lg text-black max-w-xl leading-relaxed">
+            Explore real examples of how strategic design and development
+            improved performance, usability, and business outcomes.
+          </p>
         </div>
-        
-        <div className="w-full rounded-[45px] bg-dark py-[30px] px-[20px] box-border mq1350:px-[10px] mq450:py-[10px] mq450:px-0">
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            {studies.map((desc, i) => {
-              let classes = "flex p-8 lg:p-[40px] ";
-              
-              if (i !== 5) {
-                if (i < 3) {
-                  classes += "border-b border-white ";
-                } else {
-                  classes += "border-b border-white lg:border-b-0 ";
-                }
-              }
 
-              if (i % 3 !== 0) {
-                classes += "lg:border-l lg:border-white ";
-              }
-              
+        {/* Grid */}
+        <div className="w-full rounded-3xl md:rounded-[45px] bg-dark overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {studies.map((desc, i) => {
+              // Borders: bottom for all except last row; right for non-last column
+              const isLastRow_1col = i === studies.length - 1;
+              const isLastRow_2col = i >= studies.length - (studies.length % 2 === 0 ? 2 : 1);
+              const isLastRow_3col = i >= studies.length - (studies.length % 3 === 0 ? 3 : studies.length % 3);
+
               return (
-                <div key={i} className={classes}>
+                <div
+                  key={i}
+                  className={`
+                    flex p-6 md:p-8 lg:p-10
+                    ${!isLastRow_1col ? "border-b border-white md:border-b-0" : ""}
+                    ${!isLastRow_2col ? "md:border-b md:border-white" : ""}
+                    ${!isLastRow_3col ? "lg:border-b lg:border-white" : ""}
+                    ${i % 2 !== 0 ? "md:border-l md:border-white" : ""}
+                    ${i % 3 !== 0 ? "lg:border-l lg:border-white" : ""}
+                  `}
+                >
                   <CaseStudy description={desc} />
                 </div>
               );

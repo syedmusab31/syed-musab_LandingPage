@@ -38,13 +38,13 @@
   "eslintConfig": {
     "root": true
   },
-  "name": "syed_musab",
+  "name": "syed_musab_landingpage",
   "private": true,
   "scripts": {
     "build": "vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite"
+    "dev": "vite"
   },
   "version": "0.1.0"
 }

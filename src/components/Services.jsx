@@ -6,21 +6,25 @@ const Services = ({ className = "" }) => {
   return (
     <section
       id="services"
-      className={`self-stretch flex flex-col items-start gap-20 max-w-full text-left text-lg text-black font-['Space_Grotesk'] mq450:gap-5 mq800:gap-10 ${className}`}
+      className={`w-full flex justify-center font-['Space_Grotesk'] ${className}`}
     >
-      <div className="self-stretch flex items-start py-0 px-[100px] box-border gap-10 max-w-full mq1125:flex-wrap mq1125:pl-[50px] mq1125:pr-[50px] mq1125:box-border mq800:gap-5 mq800:pl-[25px] mq800:pr-[25px] mq800:box-border">
-        <Heading
-          property1="Green"
-          label="Services"
-          showLabel={false}
-          labelVisible={false}
-        />
-        <div className="w-[580px] relative inline-block shrink-0 max-w-full">
-          I offer a focused set of services designed to help businesses grow, convert, and operate efficiently online:
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-10 md:gap-16 px-4 md:px-8 lg:px-12">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start gap-6 md:gap-10">
+          <Heading
+            property1="Green"
+            label="Services"
+            showLabel={false}
+            labelVisible={false}
+          />
+          <p className="text-base md:text-lg text-black max-w-xl leading-relaxed">
+            I offer a focused set of services designed to help businesses grow,
+            convert, and operate efficiently online:
+          </p>
         </div>
-      </div>
-      <div className="self-stretch flex-1 flex flex-col items-start gap-10 max-w-full mq800:gap-5">
-        <section className="w-full flex justify-center items-stretch py-0 px-[100px] box-border gap-10 max-w-full text-left text-xl text-black font-['Space_Grotesk'] mq450:pl-5 mq450:pr-5 mq450:box-border mq800:gap-5 mq800:pl-[50px] mq800:pr-[50px] mq800:box-border mq1350:flex-wrap">
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <Card
             illustration="/Illustration7@2x.png"
             property1="Green"
@@ -31,45 +35,56 @@ const Services = ({ className = "" }) => {
             description="Modern, fast, and conversion-focused websites built to turn visitors into paying customers."
           />
           <Card
-            cardBackgroundColor="#b9ff66"
-            headingAndLinkJustifyContent="unset"
-            illustration="/Illustration3@2x.png"
-            illustrationIconHeight="147.6px"
-            property1="White"
+            illustration="/Illustration@2x.png"
+            property1="Default"
             label="Custom Web"
             label1="Applications"
             showLabel
             labelVisible={false}
-            description="Scalable full-stack applications that automate workflows, manage data, and improve efficiency."
-          />
-        </section>
-        <section className="w-full flex justify-center items-stretch py-0 px-[100px] box-border gap-10 max-w-full mq450:pl-5 mq450:pr-5 mq450:box-border mq800:gap-5 mq800:pl-[50px] mq800:pr-[50px] mq800:box-border mq1350:flex-wrap">
-          <Card
+            description="Scalable, full-stack applications tailored to your business workflows—replacing spreadsheets and manual processes."
             cardBackgroundColor="#191a23"
-            headingAndLinkJustifyContent="unset"
-            illustration="/Illustration@2x.png"
-            illustrationIconHeight="210px"
-            property1="White"
-            label="Website"
-            label1="Optimization"
-            showLabel
-            labelVisible={false}
             textColor="text-white"
-            description="Performance, UX, and conversion improvements to maximize results from your existing traffic."
           />
           <Card
-            cardBackgroundColor="#f3f3f3"
-            headingAndLinkJustifyContent="center"
-            illustration="/tokyo-sending-messages-from-one-place-to-another-1@2x.png"
-            illustrationIconHeight="192.7px"
+            illustration="/Illustration1@2x.png"
             property1="Green"
-            label="Business Website"
-            label1="Optimization"
+            label="Landing Page"
+            label1="Design"
             showLabel
             labelVisible={false}
-            description="Develop your presence online to build trust and authority so it's easier for customers to choose you over others."
+            description="High-converting, focused landing pages that clearly communicate your value proposition."
           />
-        </section>
+          <Card
+            illustration="/Illustration2@2x.png"
+            property1="Default"
+            label="Performance"
+            label1="& Optimization"
+            showLabel
+            labelVisible={false}
+            description="Speed, SEO, and technical improvements that reduce load times, lower bounce rates, and improve rankings."
+            cardBackgroundColor="#191a23"
+            textColor="text-white"
+          />
+          <Card
+            illustration="/Illustration3@2x.png"
+            property1="Green"
+            label="API Integration"
+            label1="& Automation"
+            showLabel
+            labelVisible={false}
+            description="Connecting your tools, automating manual tasks, and building reliable data pipelines across your stack."
+          />
+          <Card
+            illustration="/Illustration3@2x.png"
+            property1="Default"
+            label="Ongoing Support"
+            label1="& Maintenance"
+            showLabel
+            labelVisible={false}
+            description="Reliable post-launch support, updates, and iterative improvements to keep your system running smoothly."
+            cardBackgroundColor="#b9ff66"
+          />
+        </div>
       </div>
     </section>
   );
